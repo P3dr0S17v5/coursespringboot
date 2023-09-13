@@ -15,8 +15,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
 
 @Entity
 @Table(name = "tb_order")
@@ -36,8 +36,8 @@ public class Order implements Serializable{
 	@JoinColumn(name = "client_id")
 	private User client;
 	
-	@Transient
-	private Set<Product> items = new HashSet<>();
+	@OneToMany(mappedBy = "id.order")
+	private Set<OrderItem> items = new HashSet<>();
 	
 	public Order() {
 	}
@@ -81,6 +81,10 @@ public class Order implements Serializable{
 
 	public void setClient(User client) {
 		this.client = client;
+	}
+	
+	public Set<OrderItem> getItems(){
+		return items;
 	}
 
 	@Override
