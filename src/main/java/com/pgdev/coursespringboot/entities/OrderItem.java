@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.pgdev.coursespringboot.entities.pk.OrderItemPK;
 
 import jakarta.persistence.EmbeddedId;
